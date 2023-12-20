@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from schemas.patient_schema import PatientBase, PatientIn, PatientOut
+from schemas.patient_schema import *
 
 
 router = APIRouter(
