@@ -1,7 +1,7 @@
 # build a schema using pydantic
 from pydantic import BaseModel
 
-class PatientBase(BaseModel):
+class DoctorBase(BaseModel):
     name: str
     date_of_birth: str
     address: str
@@ -10,13 +10,13 @@ class PatientBase(BaseModel):
         from_attributes = True
 
 
-class PatientIn(PatientBase):
+class DoctorIn(DoctorBase):
     pass
 
-class PatientOut(PatientBase):
+class DoctorOut(DoctorBase):
     pass
 
-class PatientDB(PatientBase):
+class DoctorDB(DoctorBase):
     id: str
 
         
