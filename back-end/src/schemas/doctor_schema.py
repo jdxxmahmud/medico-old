@@ -14,6 +14,9 @@ class DoctorIn(DoctorBase):
     pass
 
 class DoctorOut(DoctorBase):
+    pass
+
+class DoctorDB(DoctorBase):
     id: str
 
         
