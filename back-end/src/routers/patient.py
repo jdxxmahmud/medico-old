@@ -3,8 +3,8 @@ from sqlalchemy.orm import Session
 from schemas.patient_schema import *
 from models import patient_model
 
-from db.database import SessionLocal, engine
-from services.patient_service import get_patients
+from db.database import engine, get_db
+from services.patient_service import *
 
 patient_model.Base.metadata.create_all(bind=engine)
 
@@ -15,20 +15,25 @@ router = APIRouter(
     responses={404: {"description": "Not found"}},
 )
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally: 
-        db.close()
-
-
 
 @router.get("/")
 def get_all_patient(db: Session = Depends(get_db)):
     patients = get_patients(db)
     return patients
 
+
+@router.post("/add-patient", response_model=PatientOut)
+def create_patient(patient: PatientIn, db: Session = Depends(get_db)):
+    db_patient = get_patient_by_email(db, patient.email)
+
+    if db_patient:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    
+    return add_patient(db=db, patient=patient)
+
+@router.delete("/delete-patient", response_model=PatientOut)
+def delete_patient(patient_id: int, db: Session = Depends(get_db)):
+    return delete_patient_by_id(db, patient_id)
 
 # @router.get("/{patient_id}")
 # async def read_item(patient_id: str):
