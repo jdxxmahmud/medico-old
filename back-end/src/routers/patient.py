@@ -17,7 +17,7 @@ router = APIRouter(
 
 
 @router.get("/")
-def all_patient(db: Session = Depends(get_db)):
+def get_all_patient(db: Session = Depends(get_db)):
     patients = get_patients(db)
     return patients
 
@@ -35,17 +35,21 @@ def create_patient(patient: PatientIn, db: Session = Depends(get_db)):
 def delete_patient(patient_id: int, db: Session = Depends(get_db)):
     return delete_patient_by_id(db, patient_id)
 
+# @router.get("/{patient_id}")
+# async def read_item(patient_id: str):
+#     if patient_id not in fake_patient_db:
+#         raise HTTPException(status_code=404, detail="Patient not found")
+#     return {"patient": fake_patient_db[patient_id]["name"], "patient_id": patient_id}
 
-@router.get("/{patient_id}")
-async def patient_by_id(patient_id: int, db: Session = Depends(get_db)):
-    
-    return get_patient_by_id(patient_id, db)
 
-
-@router.put(
-    "/{patient_id}",
-    tags=["custom"],
-    responses={403: {"description": "Operation forbidden"}},
-)
-async def update_patient(patient_id: str, updated_patient: PatientIn, db: Session = Depends(get_db)):
-    return edit_patient(patient_id, updated_patient, db)
+# @router.put(
+#     "/{patient_id}",
+#     tags=["custom"],
+#     responses={403: {"description": "Operation forbidden"}},
+# )
+# async def update_patient(patient_id: str, patient: PatientIn):
+#     if patient_id != "1":
+#         raise HTTPException(
+#             status_code=403, detail="You can only update the item: 1"
+#         )
+#     return patient
