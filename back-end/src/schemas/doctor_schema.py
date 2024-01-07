@@ -6,8 +6,8 @@ class DoctorBase(BaseModel):
     date_of_birth: str
     address: str
 
-    class Config:
-        from_attributes = True
+    # class Config:
+    #     from_attributes = True
 
 
 class DoctorIn(DoctorBase):
