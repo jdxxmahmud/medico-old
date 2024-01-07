@@ -40,25 +40,22 @@ def add_patient(db: Session, patient: PatientIn):
 
 
 def edit_patient(patient_id: int, updated_patient: PatientIn, db: Session):
-    with db:
+    with db:   
         db_patient = db.get(Patient, patient_id)
 
-        patient_data = updated_patient.model_dump(exclude_unset=True)
-
-        for key, value in patient_data.items():
-            setattr(db_patient, key, value)
+        for attribute in vars(updated_patient):
+            setattr(db_patient, attribute, getattr(updated_patient, attribute))
 
         db.add(db_patient)
         db.commit()
         db.refresh(db_patient)
+
         return db_patient
 
 
-
-
-def delete_patient_by_id(db: Session, patient_id: int):
+def delete_patient_by_id(patient_id: int, db: Session):
     with db:
-        patient = get_patient_by_id(db, patient_id)
+        patient = get_patient_by_id(patient_id, db)
         db.delete(patient)
         db.commit()
 

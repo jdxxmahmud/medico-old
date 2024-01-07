@@ -6,7 +6,7 @@ app = FastAPI()
 
 
 app.include_router(patient.router)
-app.include_router(doctor.router)
+# app.include_router(doctor.router)
 
 
 
