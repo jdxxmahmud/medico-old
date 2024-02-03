@@ -18,6 +18,7 @@ python -m venv medico-env
 
 ### Step 4: Check/Add Virtual Environment to `.gitignore`
 Check if `medico-env` is already in `.gitignore`. If not, add it manually:
+
 Make sure you are in the **medico** directory.
 
 ```bash
@@ -26,7 +27,7 @@ echo "back-end/medico-env" >> .gitignore
 
 ### Step 5: Activate Virtual Environment
 
-Make sure you are in the **back-end** directory, if not, change your directory using "cd .."
+Make sure you are in the **back-end** directory.
 
 On Windows:
 ```bash
