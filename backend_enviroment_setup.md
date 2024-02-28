@@ -8,7 +8,7 @@ git clone https://github.com/jdxxmahmud/medico
 
 ### Step 2: Navigate to the Backend Directory
 ```bash
-cd medico/backend
+cd medico/back-end
 ```
 
 ### Step 3: Create a Virtual Environment
