@@ -13,7 +13,7 @@ Database (PostgreSQL):
 
 The project employs PostgreSQL as its database management system, offering a reliable and scalable solution for storing and retrieving critical healthcare data. PostgreSQL's advanced features support complex queries and data integrity.
 
-Frontend (Vue.js):
+Frontend (React):
 
 The user interface of Medico is built using Vue.js, a progressive JavaScript framework. Vue.js facilitates the creation of dynamic and responsive user interfaces, providing a seamless experience for healthcare professionals managing the system.
 Key Features:
