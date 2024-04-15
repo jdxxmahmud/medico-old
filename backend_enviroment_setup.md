@@ -17,7 +17,13 @@ python -m venv medico-env
 ```
 
 ### Step 4: Check/Add Virtual Environment to `.gitignore`
-Check if `medico-env` is already in `.gitignore`. If not, add it manually:
+Check if `medico-env` is already in `.gitignore`. 
+
+```bash
+cat ../.gitignore
+```
+
+If not, add it manually:
 
 Make sure you are in the **medico** directory.
 
@@ -28,6 +34,11 @@ echo "back-end/medico-env" >> .gitignore
 ### Step 5: Activate Virtual Environment
 
 Make sure you are in the **back-end** directory.
+
+On git bash:
+```bash
+source medico-env\Scripts\activate
+```
 
 On Windows:
 ```bash
@@ -49,7 +60,12 @@ pip install -r requirements.txt
 
 ### Step 7: Run the Backend Server
 
-Make sure you are in the **backend** directory
+Make sure you are in the **backend** directory.
+Open VScode, activate the environment using the following command
+
+```bash
+medico-env/Scripts/activate.ps1
+```
 
 ```bash
 uvicorn src/main:app --reload
