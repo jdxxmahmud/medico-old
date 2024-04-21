@@ -23,3 +23,8 @@ def get_db():
         db.close()
 
 Base = declarative_base()
+
+
+def recreate_database():
+    Base.metadata.drop_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
